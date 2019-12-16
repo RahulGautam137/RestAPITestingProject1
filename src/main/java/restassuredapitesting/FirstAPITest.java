@@ -9,6 +9,8 @@ public class FirstAPITest {
     @BeforeTest
     public void firstFunction(){
 
+        get("api.openweathermap.org/data/2.5/weather?q=London&appid=dc735b6de1394239a29c68b35248369d");
+
 
     }
 }
