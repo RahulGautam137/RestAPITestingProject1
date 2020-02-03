@@ -16,6 +16,8 @@ public class FirstAPITest {
 
         System.out.println(resp.getStatusCode());
         System.out.println(resp.getBody());
+        System.out.println(resp.getStatusCode());
+        System.out.println(resp.getBody());
 
 
     }
