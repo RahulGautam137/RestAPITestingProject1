@@ -1,5 +1,6 @@
 package main.java.restassuredapitesting;
 
+import io.restassured.http.ContentType;
 import io.restassured.response.Response;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
@@ -15,7 +16,7 @@ public class FirstAPITest {
 
 
                 given().
-                param("q","London").
+                param("zip","110032,IN").
                 param("appid","dc735b6de1394239a29c68b35248369d").
                 when().get("http://api.openweathermap.org/data/2.5/weather").
                         then().assertThat().statusCode(200);
@@ -34,9 +35,19 @@ public class FirstAPITest {
                 get("http://api.openweathermap.org/data/2.5/weather");
         System.out.println(resp.asString());
         System.out.println(resp.getStatusCode());
-        System.out.println(resp.getBody());
+       //System.out.println(resp.getBody());
         System.out.println(resp.getStatusCode());
-        System.out.println(resp.getBody());
+        //System.out.println(resp.getBody());
+
+    }
+    @Test
+    public void Test3(){
+        String description=given().
+                param("zip","110032").
+                param("appid","dc735b6de1394239a29c68b35248369d").
+                when().
+                get("http://api.openweathermap.org/data/2.5/weather").
+                then().contentType(ContentType.JSON).extract().path("$.weather..description");
 
     }
 }
